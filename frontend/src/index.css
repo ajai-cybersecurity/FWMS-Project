@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  
+  body {
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-leaf-600 hover:bg-leaf-700 text-white font-medium px-6 py-2.5 rounded-xl
+           transition-all duration-200 shadow-leaf hover:shadow-lg hover:-translate-y-0.5
+           active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-leaf-700 font-medium px-6 py-2.5 rounded-xl
+           border border-leaf-200 transition-all duration-200 hover:border-leaf-400
+           hover:shadow-md hover:-translate-y-0.5;
+  }
+
+  .btn-soil {
+    @apply bg-soil-600 hover:bg-soil-700 text-white font-medium px-6 py-2.5 rounded-xl
+           transition-all duration-200 shadow-soil hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 bg-white
+           font-body text-gray-800 placeholder-gray-400
+           focus:outline-none focus:ring-2 focus:ring-leaf-400 focus:border-transparent
+           transition-all duration-200 text-sm;
+  }
+
+  .input-error {
+    @apply border-red-400 focus:ring-red-400;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-gray-100 p-6;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-green  { @apply bg-leaf-100 text-leaf-700; }
+  .badge-yellow { @apply bg-harvest-100 text-harvest-700; }
+  .badge-red    { @apply bg-red-100 text-red-700; }
+  .badge-gray   { @apply bg-gray-100 text-gray-600; }
+  .badge-soil   { @apply bg-soil-100 text-soil-700; }
+
+  .page-enter {
+    animation: fadeUp 0.4s ease forwards;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb { background: #c4c4c4; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #a0a0a0; }
+}
+
+/* Animated background for auth pages */
+.auth-bg {
+  background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=3840&q=90');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 40, 10, 0.55) 0%,
+    rgba(20, 70, 20, 0.45) 50%,
+    rgba(10, 40, 10, 0.60) 100%
+  );
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.sidebar-link {
+  @apply flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium
+         text-gray-600 hover:text-leaf-700 hover:bg-leaf-50
+         transition-all duration-200 cursor-pointer;
+}
+
+.sidebar-link.active {
+  @apply bg-leaf-50 text-leaf-700 font-semibold;
+  box-shadow: inset 3px 0 0 #1f7a24;
+}
+
+.stat-card {
+  @apply card relative overflow-hidden;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.08;
+}
+
+/* Field pattern overlay - disabled, photo bg used instead */
+.field-pattern {}
+
+/* Dashboard main background */
+.dashboard-main-bg {
+  background-color: #f0f4f0;
+}
+
+/* Farmer banner */
+.farmer-banner {
+  background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=85');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Worker banner */
+.worker-banner {
+  background-image: url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=1600&q=85');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Toast override */
+.Toastify__toast {
+  font-family: 'DM Sans', sans-serif !important;
+  border-radius: 12px !important;
+}
+
+/* Table */
+.data-table {
+  @apply w-full text-sm;
+}
+.data-table th {
+  @apply px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 first:rounded-tl-xl last:rounded-tr-xl;
+}
+.data-table td {
+  @apply px-4 py-3 text-gray-700 border-t border-gray-100;
+}
+.data-table tr:hover td {
+  @apply bg-leaf-50/40;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

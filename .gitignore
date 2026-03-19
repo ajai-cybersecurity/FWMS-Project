@@ -1,0 +1,18 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# Backend
+backend/target/
+backend/*.jar
+backend/uploads/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/.env
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.DS_Store
